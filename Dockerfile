@@ -36,8 +36,8 @@ FROM ubuntu:20.04
     ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
     RUN ln -s ${MAVEN_HOME}/bin/mvn /usr/bin/mvn
     #RUN mvn -version
-    RUN mvn clean install
-    RUN mvn package
+    RUN mvn clean install && \
+        mvn package
 
     EXPOSE 8080
     
