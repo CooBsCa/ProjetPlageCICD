@@ -12,3 +12,5 @@ jobs:
           dockerfile: Dockerfile
       - name: "Build Image"
         run: docker image build --tag=docker-cicd:latest ./
+      - name: "Doing Test"
+        run: docker container run docker-cicd:latest mbn clean
