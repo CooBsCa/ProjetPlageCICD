@@ -12,5 +12,7 @@ jobs:
           dockerfile: Dockerfile
       - name: "Build Image"
         run: docker image build --tag=docker-cicd:latest ./
-      - name: "Doing Test"
-        run: docker container run docker-cicd:latest mbn clean
+      - name: "Doing Test : Maven Clean install"
+        run: docker container run docker-cicd:latest mvn clean install
+      - name : "Doing Test : Maven Package"
+        run: docker container run codcker-cicd:latets mvn package
