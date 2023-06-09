@@ -34,6 +34,8 @@ FROM ubuntu:20.04
     ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
     RUN ln -s ${MAVEN_HOME}/bin/mvn /usr/bin/mvn
 
+    VOLUME ["/usr/local/service"]
+
     EXPOSE 8080
     
     CMD [ "java","-cp","target/docker-service-1.0-SNAPSHOT.jar", "fr.plage.reservation.ReservationApplication"]
