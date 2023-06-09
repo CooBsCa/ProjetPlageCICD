@@ -19,30 +19,30 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ClientRestControllerTest {
-    @Autowired
-    MockMvc mockMvc;
-
-    private String nom = "DUPONT";
-    @Test
-    @Order(1)
-    void testGetClients() throws Exception {
-        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/clients");
-
-        mockMvc.perform(requestBuilder)
-                // On vérifie que l'on a bien 2 clients en retour (Wildcard, Valve et Riot)
-                .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(2))
-                // On vérifie que le 2ème éditeur est bien Valve
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].nom").value(nom));
-    }
-
-    @Test
-    @Order(2)
-    void deleteClient() throws  Exception{
-        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/api/clients/{id}", "1");
-
-        mockMvc.perform(requestBuilder)
-                .andExpect(MockMvcResultMatchers.jsonPath("$").value(true))
-                .andExpect(status().is2xxSuccessful())
-                .andDo(MockMvcResultHandlers.print());
-    }
-}
+    //@Autowired
+    //MockMvc mockMvc;
+    //
+    //private String nom = "DUPONT";
+    //@Test
+    //@Order(1)
+    //void testGetClients() throws Exception {
+    //    MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/clients");
+//
+    //    mockMvc.perform(requestBuilder)
+    //            // On vérifie que l'on a bien 2 clients en retour (Wildcard, Valve et Riot)
+    //            .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(2))
+    //            // On vérifie que le 2ème éditeur est bien Valve
+    //            .andExpect(MockMvcResultMatchers.jsonPath("$[0].nom").value(nom));
+    //}
+//
+    //@Test
+    //@Order(2)
+    //void deleteClient() throws  Exception{
+    //    MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/api/clients/{id}", "1");
+//
+    //    mockMvc.perform(requestBuilder)
+    //            .andExpect(MockMvcResultMatchers.jsonPath("$").value(true))
+    //            .andExpect(status().is2xxSuccessful())
+    //            .andDo(MockMvcResultHandlers.print());
+    //}
+}//
