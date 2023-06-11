@@ -12,7 +12,7 @@ jobs:
           dockerfile: Dockerfile
       - name: "Build Image"
         run: docker image build --tag=docker-cicd:latest ./
-      - name: "Doing Test : Maven Clean install"
-        run: docker container run docker-cicd:latest mvn clean install
-      - name : "Doing Test : Maven Package"
-        run: docker container run docker-cicd:latest mvn package
+      - name: "Starting the app"
+        run: docker container run -p 8080:8080 --name docker-cicd docker-cicd:latest mvn spring-boot:run
+      - name: "Stoping the app"
+        run: docker stop docker-cicd 
