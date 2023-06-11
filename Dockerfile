@@ -19,7 +19,7 @@ FROM ubuntu:20.04
     #RUN cp /opt/files/* /usr/share/maven
     COPY pom.xml /usr/local/service/pom.xml
     COPY src /usr/local/service/src
-    WORKDIR /usr/local/service
+    WORKDIR /usr/local/service/
     # Install OpenJDK-17
     # hadolint ignore=DL3008
     RUN apt-get update && \
@@ -32,11 +32,12 @@ FROM ubuntu:20.04
 
     ENV MAVEN_HOME /usr/share/maven
     ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
-    RUN ln -s ${MAVEN_HOME}/bin/mvn /usr/bin/mvn
+    RUN ln -s ${MAVEN_HOME}/bin/mvn /usr/bin/mvn && \
+        mvn install && \
+        mvn package
 
     VOLUME ["/usr/local/service"]
 
     EXPOSE 8080
     
     CMD [ "java","-cp","target/docker-service-1.0-SNAPSHOT.jar", "fr.plage.reservation.ReservationApplication"]
-
