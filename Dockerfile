@@ -15,7 +15,7 @@ FROM ubuntu:20.04
     WORKDIR /tmp
     RUN tar xvf maven.tar.gz && \
     #copy the file into opt/maven
-    cp -R /tmp/apache-maven-3.9.2/* /usr/share/maven/
+    cp -R /tmp/apache-maven-3.9.3/* /usr/share/maven/
     #RUN cp /opt/files/* /usr/share/maven
     COPY pom.xml /usr/local/service/pom.xml
     COPY src /usr/local/service/src
