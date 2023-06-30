@@ -10,12 +10,12 @@ FROM ubuntu:20.04
         mkdir /usr/share/maven
     #RUN mkdir /usr/share/maven
     #dwnl maven using link in tmp
-    RUN wget --progress=dot:giga --no-check-certificate https://dlcdn.apache.org/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz -O /tmp/maven.tar.gz
+    RUN wget --progress=dot:giga --no-check-certificate https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz -O /tmp/maven.tar.gz
     #extract the file
     WORKDIR /tmp
     RUN tar xvf maven.tar.gz && \
     #copy the file into opt/maven
-    cp -R /tmp/apache-maven-3.9.2/* /usr/share/maven/
+    cp -R /tmp/apache-maven-3.9.3/* /usr/share/maven/
     #RUN cp /opt/files/* /usr/share/maven
     COPY pom.xml /usr/local/service/pom.xml
     COPY src /usr/local/service/src
